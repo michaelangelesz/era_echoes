@@ -11,7 +11,7 @@ Next create a `.env` file inside of `backend`. It will need to contain the follo
 ```
 PORT=3000
 DB_USERNAME=era_echos_user
-DB_PASSWORD=password
+DB_PASSWORD=postgres
 DB_DATABASE=era_echoes_auth
 ```
 
