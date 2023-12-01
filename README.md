@@ -1,70 +1,45 @@
-# Getting Started with Create React App
+start frontend: npm start
+start backend: npm run dev
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Project Era-Echoes
+Era-Echoes is an app where users can review restaurants.
 
-## Available Scripts
+### Setup
+First, you'll need a Postgres database to connect to. Follow instructions here to setup the database and save credentials for the next step.
 
-In the project directory, you can run:
+Next create a `.env` file inside of `backend`. It will need to contain the following environment variables (change the values for the database to match what you defined in the previous step)
+```
+PORT=3000
+DB_USERNAME=era_echos_user
+DB_PASSWORD=password
+DB_DATABASE=era_echoes_auth
+```
 
-### `npm start`
+Next `cd` into `backend` and run `npm install` to install dependencies for the API.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Next, `cd` into `frontend`, and run `npm install` to install dependencies for the React app.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Finally, in separate terminals, run `npm start` in each folder so that the API and React app are running at the same time.
 
-### `npm test`
+### API (http://localhost:3000)
+| Method | Path                                 | Purpose                                   |
+| ------ | ------------------------------------ | ----------------------------------------- |
+| GET    | /                                    | Home page                                 |
+| GET    | /capsules                              | Capsules index page                         |
+| POST   | /capsules                              | Create new capsule                          |
+| GET    | /capsules/:capsuleId                     | Details about a particular capsule          |
+| PUT    | /capsules/:capsuleId                     | Update a particular capsule                 |
+| DELETE | /capsules/:capsuleId                     | Delete a particular capsule                 |
+| POST   | /capsules/:capsuleId/comments            | Create a comment about a particular capsule |
+| DELETE | /capsules/:capsuleId/comments/:commentId | Delete a comment about a particular capsule |
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### App (http://localhost:3000)
+| Path                  | Component                 | Purpose                                                                         |
+| --------------------- | ------------------------- | ------------------------------------------------------------------------------- |
+| /                     | `Home.js`                 | Home page                                                                       |
+| /sign-up              | `users/SignUpForm.js`     | Form for creating a new user                                                    |
+| /capsules               | `capsules/CapsuleIndex.js`    | List of capsules                                                                  |
+| /capsules/new           | `capsules/NewCapsuleForm.js`  | Form for creating a new capsule                                                   |
+| /capsules/:capsuleId      | `capsules/CapsuleDetails.js`  | Details of a capsule, including it's comments, and a form to create a new comment |
+| /capsules/:capsuleId/edit | `capsules/EditCapsuleForm.js` | Form for editing a capsule                                                        |
